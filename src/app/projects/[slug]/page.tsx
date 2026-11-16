@@ -1,3 +1,4 @@
+﻿import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { projectsData } from "@/data/projects";
@@ -61,11 +62,22 @@ export async function generateMetadata({
   return { title: "Project Not Found" };
 }
 
-export default async function ProjectDetailPage({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
+function ProjectDetailFallback() {
+  return (
+    <article className="py-12 sm:py-16">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 space-y-10">
+        <div className="h-4 w-40 rounded bg-bg-secondary animate-pulse" />
+        <div className="space-y-4 border-b border-border-main pb-8">
+          <div className="h-4 w-64 rounded bg-bg-secondary animate-pulse" />
+          <div className="h-10 w-3/4 rounded bg-bg-secondary animate-pulse" />
+          <div className="h-5 w-full max-w-2xl rounded bg-bg-secondary animate-pulse" />
+        </div>
+      </div>
+    </article>
+  );
+}
+
+async function ProjectDetailContent({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   
   // 1. Check local static projects first
@@ -107,7 +119,6 @@ export default async function ProjectDetailPage({
   return (
     <article className="py-12 sm:py-16">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 space-y-10">
-        {/* Back Link */}
         <Link
           href="/projects"
           className="inline-flex items-center gap-2 text-xs font-mono text-text-muted hover:text-accent transition-colors"
@@ -116,7 +127,6 @@ export default async function ProjectDetailPage({
           <span>Back to all projects</span>
         </Link>
 
-        {/* Header Block */}
         <div className="space-y-4 border-b border-border-main pb-8">
           <div className="flex flex-wrap items-center gap-2 text-xs font-mono">
             <span className="text-accent uppercase tracking-wider font-semibold">
@@ -157,7 +167,6 @@ export default async function ProjectDetailPage({
             {description}
           </p>
 
-          {/* Technology & Topics Pills */}
           <div className="flex flex-wrap gap-1.5 pt-2">
             {technologies.map((t) => (
               <span
@@ -169,7 +178,6 @@ export default async function ProjectDetailPage({
             ))}
           </div>
 
-          {/* Action Links */}
           <div className="flex flex-wrap items-center gap-3 pt-3">
             {githubUrl && (
               <a
@@ -197,11 +205,9 @@ export default async function ProjectDetailPage({
           </div>
         </div>
 
-        {/* Case Study Content or Repository README */}
         <div className="space-y-12">
           {caseStudy ? (
             <>
-              {/* Problem & Goal Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="p-6 rounded-xl border border-border-main bg-bg-card space-y-3">
                   <div className="flex items-center gap-2 text-xs font-mono uppercase font-bold text-amber-500">
@@ -224,7 +230,6 @@ export default async function ProjectDetailPage({
                 </div>
               </div>
 
-              {/* Approach */}
               <div className="space-y-4 p-6 rounded-xl border border-border-main bg-bg-card">
                 <h2 className="text-base font-bold text-text-primary flex items-center gap-2">
                   <Compass className="w-4 h-4 text-accent" />
@@ -235,7 +240,6 @@ export default async function ProjectDetailPage({
                 </p>
               </div>
 
-              {/* Technology Choices */}
               {caseStudy.techChoices && caseStudy.techChoices.length > 0 && (
                 <div className="space-y-4">
                   <h2 className="text-base font-bold text-text-primary flex items-center gap-2">
@@ -253,7 +257,6 @@ export default async function ProjectDetailPage({
                 </div>
               )}
 
-              {/* Key Challenges */}
               {caseStudy.challenges && caseStudy.challenges.length > 0 && (
                 <div className="space-y-4 p-6 rounded-xl border border-border-main bg-bg-card">
                   <h2 className="text-base font-bold text-text-primary flex items-center gap-2">
@@ -268,7 +271,6 @@ export default async function ProjectDetailPage({
                 </div>
               )}
 
-              {/* What I Learned */}
               {caseStudy.whatILearned && caseStudy.whatILearned.length > 0 && (
                 <div className="space-y-4 p-6 rounded-xl border border-accent-border bg-accent-surface/30">
                   <h2 className="text-base font-bold text-text-primary flex items-center gap-2">
@@ -285,7 +287,6 @@ export default async function ProjectDetailPage({
             </>
           ) : null}
 
-          {/* Verified Repository README / Documentation */}
           {readmeContent ? (
             <div className="space-y-4 p-6 sm:p-8 rounded-xl border border-border-main bg-bg-card">
               <div className="flex items-center justify-between pb-3 border-b border-border-subtle">
@@ -330,7 +331,6 @@ export default async function ProjectDetailPage({
           ) : null}
         </div>
 
-        {/* Bottom Navigation */}
         <div className="pt-8 border-t border-border-main flex items-center justify-between">
           <Link
             href="/projects"
@@ -348,5 +348,17 @@ export default async function ProjectDetailPage({
         </div>
       </div>
     </article>
+  );
+}
+
+export default function ProjectDetailPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  return (
+    <Suspense fallback={<ProjectDetailFallback />}>
+      <ProjectDetailContent params={params} />
+    </Suspense>
   );
 }
