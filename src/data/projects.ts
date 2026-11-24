@@ -2,6 +2,46 @@ import { Project } from "@/types/portfolio";
 
 export const projectsData: Project[] = [
   {
+    id: "forensiq",
+    slug: "forensiq",
+    title: "ForensIQ — Deepfake Detection & Digital Forensics Platform",
+    shortDescription: "Multimodal deepfake detection and zero-trust digital forensics platform combining deterministic heuristics with AI diagnostics.",
+    category: "Cybersecurity",
+    technologies: ["TypeScript", "Next.js", "AI Forensics", "Zero-Trust Architecture", "Media Cryptography"],
+    status: "In Progress",
+    featured: true,
+    githubUrl: "https://github.com/DevEagleEye97/ForensIQ",
+    demoUrl: "https://forensiq-teal.vercel.app",
+    startedDate: "November 2026",
+    caseStudy: {
+      problem: "The proliferation of synthetic media and deepfakes undermines evidence integrity during digital forensic investigations, judicial proceedings, and identity verification.",
+      goal: "Build an industrial-grade, zero-trust digital forensics platform that ingests, analyzes, and cryptographically archives multimedia evidence.",
+      approach: "Engineered for SAPTHAHACKS 2026 with Team Bhairava. Combines multi-layered deterministic forensic heuristics with neural diagnostic pipelines and cryptographic audit logging.",
+      techChoices: [
+        {
+          tech: "Next.js & TypeScript",
+          rationale: "Strict typing across evidence payloads and low-latency client-side frame processing.",
+        },
+        {
+          tech: "Zero-Trust Tactical Interface",
+          rationale: "Data-dense, high-contrast UI designed for rapid incident investigation without visual clutter.",
+        },
+      ],
+      challenges: [
+        "Coordinating high-throughput media ingestion with client-side frame-by-frame forensic analysis.",
+        "Designing an evidence chain-of-custody interface adhering to zero-trust tactical aesthetics.",
+      ],
+      whatILearned: [
+        "Multimodal synthetic artifact detection techniques and frame-level frequency analysis.",
+        "Structuring tamper-evident evidence manifests and cryptographic audit trails.",
+      ],
+      futureImprovements: [
+        "Integrate C2PA (Coalition for Content Provenance and Authenticity) metadata parsing.",
+        "Add distributed batch analysis workers for high-volume evidence triage.",
+      ],
+    },
+  },
+  {
     id: "threat-x",
     slug: "threat-x",
     title: "Threat-X — Digital Threat Investigation Tool",
@@ -11,7 +51,7 @@ export const projectsData: Project[] = [
     status: "In Progress",
     featured: true,
     githubUrl: "https://github.com/DevEagleEye97/Threat-X",
-    demoUrl: null,
+    demoUrl: "https://threat-x.vercel.app",
     startedDate: "October 2026",
     caseStudy: {
       problem: "Triaging threat evidence and investigating security indicators often requires switching across multiple disjointed tools during time-sensitive security incident investigations.",
@@ -42,6 +82,87 @@ export const projectsData: Project[] = [
     },
   },
   {
+    id: "teamguard",
+    slug: "teamguard",
+    title: "TeamGuard — AI Supply Chain Intelligence",
+    shortDescription: "AI-powered supply chain intelligence platform designed to evaluate vendor risk profiles, logistical vulnerabilities, and anomaly detection.",
+    category: "AI & Automation",
+    technologies: ["TypeScript", "Next.js", "AI Intelligence", "Threat Modeling", "Risk Analysis"],
+    status: "In Progress",
+    featured: true,
+    githubUrl: "https://github.com/DevEagleEye97/teamguard-",
+    demoUrl: "https://teamguard-five.vercel.app",
+    startedDate: "November 2026",
+    caseStudy: {
+      problem: "Modern supply chains face complex multi-tier vendor vulnerabilities and unpredictable logistical failure points that manual audits fail to catch.",
+      goal: "Develop an intelligence dashboard that models operational dependencies, scores vendor risk profiles, and predicts delivery bottlenecks.",
+      approach: "Crafted with TypeScript and Next.js, integrating automated risk telemetry and threat modeling algorithms for continuous supply resilience monitoring.",
+      techChoices: [
+        {
+          tech: "TypeScript & Next.js",
+          rationale: "Type-safe data pipelines for complex dependency graphs and responsive dashboard views.",
+        },
+        {
+          tech: "Risk Telemetry Engine",
+          rationale: "Automated scoring models to quantify multi-tier supplier vulnerability exposure.",
+        },
+      ],
+      challenges: [
+        "Modeling multi-node dependency graphs without performance degradation on large vendor networks.",
+        "Normalizing heterogeneous logistics data into actionable risk metrics.",
+      ],
+      whatILearned: [
+        "Supply chain threat vectors and dependency tree risk propagation.",
+        "Responsive data visualization for complex operational metrics.",
+      ],
+      futureImprovements: [
+        "Integrate real-time geopolitical risk intelligence feeds.",
+        "Add automated incident response playbooks for logistics disruptions.",
+      ],
+    },
+  },
+  {
+    id: "team-bhairava",
+    slug: "team-bhairava",
+    title: "HackForge — Team Bhairava Academic & Hackathon Desk",
+    shortDescription: "Digital team desk and academic collaboration platform designed for hackathon tracking, asset management, and project coordination.",
+    category: "Development",
+    technologies: ["Next.js 16", "TypeScript", "Tailwind CSS v4", "Supabase", "Real-Time Sync"],
+    status: "Completed",
+    featured: true,
+    githubUrl: "https://github.com/DevEagleEye97/Team-Bhairava-",
+    demoUrl: "https://team-bhairava.vercel.app",
+    startedDate: "October 2026",
+    completedDate: "November 2026",
+    caseStudy: {
+      problem: "Coordinating multi-track engineering projects during high-stakes hackathons leads to lost assets, misaligned milestones, and fragmented communications.",
+      goal: "Build a unified collaboration command desk for Team Bhairava to manage project deliverables, milestone tracking, and shared resources in real time.",
+      approach: "Built using Next.js 16, TypeScript, Tailwind CSS v4, and Supabase for reactive real-time state synchronization across team members.",
+      techChoices: [
+        {
+          tech: "Next.js 16 & Tailwind CSS v4",
+          rationale: "Fast client hydration and low-latency interaction during time-sensitive hackathon work.",
+        },
+        {
+          tech: "Supabase Realtime",
+          rationale: "Instant broadcast channels for milestone updates and shared team assets.",
+        },
+      ],
+      challenges: [
+        "Designing low-latency sync for collaborative task boards and milestone checklists.",
+        "Maintaining an ultra-responsive dark-mode tactical UI under intense hackathon workflows.",
+      ],
+      whatILearned: [
+        "Supabase real-time channel subscriptions and relational schema design.",
+        "Fast prototyping patterns with Next.js 16 App Router and Tailwind CSS v4.",
+      ],
+      futureImprovements: [
+        "Add integrated live code snippet and architecture diagram sharing.",
+        "Export post-hackathon retrospectives into structured markdown project briefs.",
+      ],
+    },
+  },
+  {
     id: "shvasa-banking-co",
     slug: "shvasa-banking-co",
     title: "Shvasa Banking — Modern Financial Web Platform",
@@ -51,7 +172,7 @@ export const projectsData: Project[] = [
     status: "In Progress",
     featured: true,
     githubUrl: "https://github.com/DevEagleEye97/Shvasa-Banking-co",
-    demoUrl: null,
+    demoUrl: "https://shvasa-banking-co.vercel.app",
     startedDate: "September 2026",
     caseStudy: {
       problem: "Traditional banking dashboards are often cluttered and confusing for modern users managing day-to-day accounts and transaction histories.",
@@ -122,12 +243,12 @@ export const projectsData: Project[] = [
     id: "dhanush-gangadhar",
     slug: "dhanush-gangadhar",
     title: "Personal Digital Headquarters & Learning Hub",
-    shortDescription: "High-performance personal website and 7-week cybersecurity curriculum roadmap built with Next.js 16, TypeScript, and Tailwind CSS.",
+    shortDescription: "High-performance personal website and 7-week cybersecurity curriculum roadmap built with Next.js 16, TypeScript, GSAP, and Tailwind CSS.",
     category: "Development",
-    technologies: ["Next.js 16", "TypeScript", "Tailwind CSS v4", "React 19"],
+    technologies: ["Next.js 16", "TypeScript", "Tailwind CSS v4", "React 19", "GSAP"],
     status: "Completed",
     featured: true,
-    githubUrl: "https://github.com/DevEagleEye97/Dhanush-Gangadhar",
+    githubUrl: "https://github.com/DevEagleEye97/Dhanush-Gangadhar-",
     demoUrl: "https://dhanush-gangadhar.vercel.app/",
     startedDate: "October 2026",
     completedDate: "October 2026",

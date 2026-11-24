@@ -51,11 +51,28 @@ export interface UnifiedProject {
 const STATIC_FALLBACK_REPOS: GitHubRawRepo[] = [
   {
     id: 1,
+    name: "ForensIQ",
+    full_name: "DevEagleEye97/ForensIQ",
+    description: "🔱 Multimodal deepfake detection and zero-trust digital forensics platform engineered for SAPTHAHACKS 2026.",
+    html_url: "https://github.com/DevEagleEye97/ForensIQ",
+    homepage: "https://forensiq-teal.vercel.app",
+    language: "TypeScript",
+    topics: ["cybersecurity", "digital-forensics", "deepfake-detection", "ai", "zero-trust"],
+    stargazers_count: 0,
+    forks_count: 0,
+    fork: false,
+    archived: false,
+    updated_at: "2026-11-19T12:54:57Z",
+    created_at: "2026-11-01T00:00:00Z",
+    default_branch: "main",
+  },
+  {
+    id: 2,
     name: "Threat-X",
     full_name: "DevEagleEye97/Threat-X",
     description: "🛡️ Evidence-driven digital threat investigation — built to turn a hackathon idea into a real cybersecurity product. 🔍⚡",
     html_url: "https://github.com/DevEagleEye97/Threat-X",
-    homepage: null,
+    homepage: "https://threat-x.vercel.app",
     language: "HTML",
     topics: ["cybersecurity", "threat-investigation", "hackathon"],
     stargazers_count: 0,
@@ -67,12 +84,46 @@ const STATIC_FALLBACK_REPOS: GitHubRawRepo[] = [
     default_branch: "main",
   },
   {
-    id: 2,
+    id: 3,
+    name: "teamguard-",
+    full_name: "DevEagleEye97/teamguard-",
+    description: "AI-Powered Supply Chain Intelligence and threat surface modeling dashboard.",
+    html_url: "https://github.com/DevEagleEye97/teamguard-",
+    homepage: "https://teamguard-five.vercel.app",
+    language: "TypeScript",
+    topics: ["ai", "supply-chain", "intelligence", "threat-modeling"],
+    stargazers_count: 0,
+    forks_count: 0,
+    fork: false,
+    archived: false,
+    updated_at: "2026-11-03T00:59:07Z",
+    created_at: "2026-11-01T00:00:00Z",
+    default_branch: "main",
+  },
+  {
+    id: 4,
+    name: "Team-Bhairava-",
+    full_name: "DevEagleEye97/Team-Bhairava-",
+    description: "⚡ HackForge — Digital team desk and academic collaboration platform for hackathon engineering workflows.",
+    html_url: "https://github.com/DevEagleEye97/Team-Bhairava-",
+    homepage: "https://team-bhairava.vercel.app",
+    language: "JavaScript",
+    topics: ["hackathon", "collaboration", "nextjs", "supabase"],
+    stargazers_count: 0,
+    forks_count: 0,
+    fork: false,
+    archived: false,
+    updated_at: "2026-10-19T06:03:25Z",
+    created_at: "2026-10-15T00:00:00Z",
+    default_branch: "main",
+  },
+  {
+    id: 5,
     name: "Shvasa-Banking-co",
     full_name: "DevEagleEye97/Shvasa-Banking-co",
-    description: "Modern financial banking interface and client account dashboard prototype.",
+    description: "Modern financial banking interface and client account dashboard prototype with clean transaction flows.",
     html_url: "https://github.com/DevEagleEye97/Shvasa-Banking-co",
-    homepage: null,
+    homepage: "https://shvasa-banking-co.vercel.app",
     language: "JavaScript",
     topics: ["banking", "web-application", "javascript"],
     stargazers_count: 0,
@@ -84,14 +135,14 @@ const STATIC_FALLBACK_REPOS: GitHubRawRepo[] = [
     default_branch: "main",
   },
   {
-    id: 3,
+    id: 6,
     name: "basic-chess-game-",
     full_name: "DevEagleEye97/basic-chess-game-",
-    description: "Python chess game engine and board move validator.",
+    description: "Python chess game engine, legal move generator, and board state validator.",
     html_url: "https://github.com/DevEagleEye97/basic-chess-game-",
     homepage: null,
     language: "Python",
-    topics: ["python", "chess", "game-engine"],
+    topics: ["python", "chess", "game-engine", "algorithms"],
     stargazers_count: 0,
     forks_count: 0,
     fork: false,
@@ -101,14 +152,14 @@ const STATIC_FALLBACK_REPOS: GitHubRawRepo[] = [
     default_branch: "main",
   },
   {
-    id: 4,
+    id: 7,
     name: "shvasaa",
     full_name: "DevEagleEye97/shvasaa",
-    description: "Frontend design system and responsive styling experiment.",
+    description: "Frontend design system and responsive styling experiment exploring modern CSS layouts.",
     html_url: "https://github.com/DevEagleEye97/shvasaa",
-    homepage: null,
+    homepage: "https://shvasaa.vercel.app",
     language: "CSS",
-    topics: ["css", "styling"],
+    topics: ["css", "styling", "frontend"],
     stargazers_count: 0,
     forks_count: 0,
     fork: false,
@@ -118,19 +169,36 @@ const STATIC_FALLBACK_REPOS: GitHubRawRepo[] = [
     default_branch: "main",
   },
   {
-    id: 5,
-    name: "Dhanush-Gangadhar",
-    full_name: "DevEagleEye97/Dhanush-Gangadhar",
-    description: "Personal portfolio and cybersecurity learning hub headquarters.",
-    html_url: "https://github.com/DevEagleEye97/Dhanush-Gangadhar",
-    homepage: "https://dhanush-gangadhar.vercel.app/",
-    language: "TypeScript",
-    topics: ["portfolio", "nextjs", "cybersecurity"],
+    id: 8,
+    name: "frontend-website-",
+    full_name: "DevEagleEye97/frontend-website-",
+    description: "Team Bhairava web portal and engineering project showcase.",
+    html_url: "https://github.com/DevEagleEye97/frontend-website-",
+    homepage: null,
+    language: "HTML",
+    topics: ["team-bhairava", "frontend", "showcase"],
     stargazers_count: 0,
     forks_count: 0,
     fork: false,
     archived: false,
-    updated_at: "2026-10-12T00:00:00Z",
+    updated_at: "2026-11-15T14:53:52Z",
+    created_at: "2026-11-15T00:00:00Z",
+    default_branch: "main",
+  },
+  {
+    id: 9,
+    name: "Dhanush-Gangadhar-",
+    full_name: "DevEagleEye97/Dhanush-Gangadhar-",
+    description: "Personal digital headquarters, cybersecurity curriculum roadmap, and interactive developer tooling.",
+    html_url: "https://github.com/DevEagleEye97/Dhanush-Gangadhar-",
+    homepage: "https://dhanush-gangadhar.vercel.app/",
+    language: "TypeScript",
+    topics: ["portfolio", "nextjs", "cybersecurity", "gsap", "tailwind"],
+    stargazers_count: 0,
+    forks_count: 0,
+    fork: false,
+    archived: false,
+    updated_at: "2026-11-24T14:29:22Z",
     created_at: "2026-10-10T00:00:00Z",
     default_branch: "main",
   },
@@ -154,6 +222,8 @@ export function inferProjectCategory(
   if (
     text.includes("security") ||
     text.includes("threat") ||
+    text.includes("forensic") ||
+    text.includes("deepfake") ||
     text.includes("cve") ||
     text.includes("nmap") ||
     text.includes("wireshark") ||
@@ -162,7 +232,8 @@ export function inferProjectCategory(
     text.includes("exploit") ||
     text.includes("soc") ||
     text.includes("crypto") ||
-    text.includes("siem")
+    text.includes("siem") ||
+    text.includes("zero-trust")
   ) {
     return "Cybersecurity";
   }
@@ -319,16 +390,22 @@ export async function getPublicRepositories(): Promise<{
   const endpoint = `https://api.github.com/users/${username}/repos?type=owner&sort=updated&per_page=100`;
 
   try {
+    const headers: Record<string, string> = {
+      Accept: "application/vnd.github.v3+json",
+      "User-Agent": "DevEagleEye97-Portfolio-App",
+    };
+    if (process.env.GITHUB_TOKEN) {
+      headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
+    }
+
     const res = await fetch(endpoint, {
       next: { revalidate: 3600 }, // Cache on server for 1 hour
-      headers: {
-        Accept: "application/vnd.github.v3+json",
-        "User-Agent": "DevEagleEye97-Portfolio-App",
-      },
-    });
+      headers,
+      signal: AbortSignal.timeout(5000),
+    }).catch(() => null);
 
-    if (!res.ok) {
-      // Fallback on HTTP errors (e.g. rate limit 403 or 404)
+    if (!res || !res.ok) {
+      // Fallback on HTTP errors (e.g. rate limit 403 or 404) or fetch errors
       return {
         projects: processRawRepos(STATIC_FALLBACK_REPOS),
         isFallback: true,
@@ -337,7 +414,7 @@ export async function getPublicRepositories(): Promise<{
       };
     }
 
-    const data: GitHubRawRepo[] = await res.json();
+    const data: GitHubRawRepo[] = await res.json().catch(() => null);
     if (!Array.isArray(data)) {
       return {
         projects: processRawRepos(STATIC_FALLBACK_REPOS),
@@ -392,19 +469,25 @@ export async function getRepoReadme(repoName: string): Promise<string | null> {
   const endpoint = `https://api.github.com/repos/${username}/${encodeURIComponent(sanitizedName)}/readme`;
 
   try {
+    const headers: Record<string, string> = {
+      Accept: "application/vnd.github.raw+json",
+      "User-Agent": "DevEagleEye97-Portfolio-App",
+    };
+    if (process.env.GITHUB_TOKEN) {
+      headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
+    }
+
     const res = await fetch(endpoint, {
       next: { revalidate: 3600 },
-      headers: {
-        Accept: "application/vnd.github.raw+json",
-        "User-Agent": "DevEagleEye97-Portfolio-App",
-      },
-    });
+      headers,
+      signal: AbortSignal.timeout(5000),
+    }).catch(() => null);
 
-    if (!res.ok) {
+    if (!res || !res.ok) {
       return null;
     }
 
-    const text = await res.text();
+    const text = await res.text().catch(() => null);
     return text || null;
   } catch {
     return null;
