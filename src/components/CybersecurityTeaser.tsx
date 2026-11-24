@@ -6,7 +6,7 @@ export function CybersecurityTeaser() {
   return (
     <section className="py-16 sm:py-20 border-b border-border-subtle bg-bg-secondary/20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="p-8 sm:p-10 rounded-2xl border border-border-main bg-bg-card relative overflow-hidden">
+        <div className="p-8 sm:p-10 rounded-2xl border border-border-main bg-bg-card relative overflow-hidden shadow-xs hover:border-accent/40 transition-colors">
           {/* Subtle background tech accent */}
           <div 
             className="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-accent/5 blur-3xl pointer-events-none"

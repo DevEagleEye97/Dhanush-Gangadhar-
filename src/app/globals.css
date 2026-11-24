@@ -3,41 +3,43 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --bg-main: #F7F8F4;
-  --bg-secondary: #EEF0EA;
+  --font-geist-sans: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-geist-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --bg-main: #F6F6F8;
+  --bg-secondary: #EDEDF0;
   --bg-card: #FFFFFF;
-  --bg-card-hover: #F2F5ED;
-  --text-primary: #141714;
-  --text-secondary: #565E53;
-  --text-muted: #7E867B;
-  --border-main: #D8DDD4;
-  --border-subtle: #E6EAE3;
-  --accent: #3A6321;
-  --accent-muted: #557F36;
-  --accent-surface: #E8EFE3;
-  --accent-border: #BCD0B0;
+  --bg-card-hover: #F2F2F5;
+  --text-primary: #121316;
+  --text-secondary: #5A5D66;
+  --text-muted: #848792;
+  --border-main: #DCE0E6;
+  --border-subtle: #E8EBF0;
+  --accent: #059669;
+  --accent-muted: #10B981;
+  --accent-surface: #ECFDF5;
+  --accent-border: #A7F3D0;
   --accent-badge-text: #FFFFFF;
-  --terminal-bg: #121512;
-  --terminal-text: #F3F2EA;
+  --terminal-bg: #111318;
+  --terminal-text: #F3F4F6;
 }
 
 .dark {
-  --bg-main: #101210;
-  --bg-secondary: #171A17;
-  --bg-card: #1C211D;
-  --bg-card-hover: #232823;
-  --text-primary: #F3F2EA;
-  --text-secondary: #A6ADA3;
-  --text-muted: #737A71;
-  --border-main: #303731;
-  --border-subtle: #242924;
-  --accent: #C5E3A7;
-  --accent-muted: #A8C98A;
-  --accent-surface: rgba(197, 227, 167, 0.10);
-  --accent-border: rgba(197, 227, 167, 0.25);
-  --accent-badge-text: #101210;
-  --terminal-bg: #0C0E0C;
-  --terminal-text: #F3F2EA;
+  --bg-main: #0D0E12;
+  --bg-secondary: #14161C;
+  --bg-card: #181A22;
+  --bg-card-hover: #1F222C;
+  --text-primary: #F4F5F7;
+  --text-secondary: #9FA4B2;
+  --text-muted: #6B7280;
+  --border-main: #262934;
+  --border-subtle: #1D2028;
+  --accent: #34D399;
+  --accent-muted: #10B981;
+  --accent-surface: rgba(52, 211, 153, 0.10);
+  --accent-border: rgba(52, 211, 153, 0.25);
+  --accent-badge-text: #0D0E12;
+  --terminal-bg: #090A0E;
+  --terminal-text: #F3F4F6;
 }
 
 @theme {
@@ -63,6 +65,11 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+html.lenis, html.lenis body {
+  height: auto;
+  scroll-behavior: auto !important;
 }
 
 @media (prefers-reduced-motion: reduce) {

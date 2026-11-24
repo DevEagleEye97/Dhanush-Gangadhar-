@@ -7,6 +7,7 @@ import { Project } from "@/types/portfolio";
 import { projectsData } from "@/data/projects";
 import { ProjectCard } from "@/components/ProjectCard";
 import { CaseStudyModal } from "@/components/CaseStudyModal";
+import { GsapReveal } from "@/components/GsapReveal";
 import Link from "next/link";
 import { 
   ArrowRight, 
@@ -278,7 +279,7 @@ export function ProjectsSection({ limit, showViewAllLink = true }: ProjectsSecti
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <GsapReveal threshold="top 90%" stagger={0.08} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {displayedProjects.map((project) => (
               <ProjectCard
                 key={project.id}
@@ -286,7 +287,7 @@ export function ProjectsSection({ limit, showViewAllLink = true }: ProjectsSecti
                 onOpenCaseStudy={handleOpenCaseStudy}
               />
             ))}
-          </div>
+          </GsapReveal>
         )}
 
         {/* Footer info: Public GitHub API attribution */}

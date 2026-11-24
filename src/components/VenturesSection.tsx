@@ -28,7 +28,7 @@ export function VenturesSection() {
           {ventures.map((venture) => (
             <div
               key={venture.id}
-              className="rounded-2xl border border-border-main bg-bg-card p-6 sm:p-8 relative overflow-hidden"
+              className="rounded-2xl border border-border-main bg-bg-card p-6 sm:p-8 relative overflow-hidden shadow-xs hover:border-accent/40 transition-colors"
             >
               {/* Top Accent Strip */}
               <div className="flex flex-wrap items-center justify-between gap-4 mb-6">

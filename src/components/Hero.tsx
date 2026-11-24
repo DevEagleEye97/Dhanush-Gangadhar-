@@ -1,137 +1,221 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
+import gsap from "gsap";
 import { portfolioConfig } from "@/config/portfolio";
-import { ArrowDown, ArrowRight, ShieldCheck, Terminal, Layers, Globe, ExternalLink } from "lucide-react";
-import { GithubIcon, LinkedinIcon } from "@/components/SocialIcons";
+import { ArrowUpRight, Sparkles, Terminal, ShieldCheck, Layers } from "lucide-react";
+import { GsapMagnetic } from "@/components/GsapMagnetic";
 
 export function Hero() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const heroCardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) return;
+
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+      tl.from(heroCardRef.current, {
+        scale: 0.97,
+        opacity: 0,
+        duration: 1.0,
+      })
+      .from(".hero-greeting", {
+        y: -20,
+        opacity: 0,
+        duration: 0.7,
+      }, "-=0.6")
+      .from(".hero-headline", {
+        y: 35,
+        opacity: 0,
+        duration: 0.9,
+      }, "-=0.5")
+      .from(".hero-subcopy", {
+        y: 20,
+        opacity: 0,
+        duration: 0.75,
+      }, "-=0.6")
+      .from(".hero-bottom", {
+        y: 20,
+        opacity: 0,
+        duration: 0.7,
+      }, "-=0.5")
+      .from(".hero-pillar", {
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.12,
+      }, "-=0.4");
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="relative pt-12 pb-16 sm:pt-20 sm:pb-24 border-b border-border-subtle overflow-hidden">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        {/* Subtle background ambient grid marker */}
-        <div 
-          className="absolute inset-0 pointer-events-none opacity-[0.03] dark:opacity-[0.04]"
-          style={{
-            backgroundImage: `radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)`,
-            backgroundSize: `24px 24px`,
-          }}
-          aria-hidden="true"
-        />
-
-        <div className="max-w-3xl relative z-10 space-y-6">
-          {/* Eyebrow badge */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-border-main bg-bg-card text-xs font-mono tracking-widest text-text-secondary">
-            <span className="w-2 h-2 rounded-full bg-accent" />
-            <span className="uppercase text-[11px] font-semibold">{portfolioConfig.eyebrow}</span>
+    <section ref={containerRef} className="relative pt-4 pb-12 sm:pt-6 sm:pb-16 overflow-hidden">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-8">
+        
+        {/* Massive Hero Visual & Engineering Card (nitin.design signature nature & glare hero) */}
+        <div
+          ref={heroCardRef}
+          className="relative rounded-[32px] overflow-hidden border border-neutral-200/60 dark:border-neutral-800/80 min-h-[580px] sm:min-h-[660px] flex flex-col justify-between p-6 sm:p-12 shadow-2xl"
+        >
+          
+          {/* Nature & Lens Glare Photography Background */}
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="/images/hero-nature-glare.jpg"
+              alt="Lush rolling hills with sunlight flare and landscape photography"
+              fill
+              priority
+              className="object-cover object-center scale-[1.03] transition-transform duration-1000 ease-out"
+              sizes="(max-w: 1280px) 100vw, 1280px"
+            />
+            {/* Cinematic Photography Lens Glare & Sun Flare Overlays */}
+            <div 
+              className="absolute inset-0 pointer-events-none mix-blend-screen opacity-70"
+              style={{
+                background: "radial-gradient(ellipse at 85% 20%, rgba(255, 230, 180, 0.45) 0%, rgba(255, 200, 120, 0.25) 30%, transparent 65%)",
+              }}
+            />
+            <div 
+              className="absolute inset-0 pointer-events-none mix-blend-overlay opacity-40"
+              style={{
+                background: "linear-gradient(135deg, rgba(255,255,255,0.3) 0%, transparent 50%, rgba(0,0,0,0.5) 100%)",
+              }}
+            />
+            {/* Subtle photographic vignette & text contrast backing */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/30 pointer-events-none" />
           </div>
 
-          {/* Headline */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-text-primary leading-[1.12]">
-            {portfolioConfig.heroHeadline}
-          </h1>
+          {/* Top greeting bar (nitin.design style) */}
+          <div className="hero-greeting relative z-20 flex items-center justify-between gap-4">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-xs font-mono text-white shadow-lg">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span>Hey! I&apos;m <strong className="font-semibold text-white">{portfolioConfig.displayName}</strong>.</span>
+            </div>
 
-          {/* Supporting Copy */}
-          <p className="text-lg sm:text-xl text-text-secondary leading-relaxed font-normal">
-            {portfolioConfig.heroSupportingCopy}
-          </p>
-
-          {/* Action CTAs */}
-          <div className="flex flex-wrap items-center gap-3 pt-2">
-            <Link
-              href="#projects"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-accent text-white dark:text-[#101210] font-semibold text-sm hover:opacity-90 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent shadow-xs"
-            >
-              <span>Explore my work</span>
-              <ArrowDown className="w-4 h-4 text-white dark:text-[#101210]" />
-            </Link>
-
-            <Link
-              href="/cybersecurity"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-border-main bg-bg-card hover:bg-bg-secondary text-text-primary font-medium text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-            >
-              <span>Explore my learning path</span>
-              <ArrowRight className="w-4 h-4 text-accent" />
-            </Link>
-          </div>
-
-          {/* Verified Profiles Quick Links */}
-          <div className="pt-2 flex flex-wrap items-center gap-3 text-xs font-mono text-text-secondary">
-            <span className="text-text-muted">Verified Profiles:</span>
             {portfolioConfig.githubUrl && (
-              <a
-                href={portfolioConfig.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md border border-border-subtle bg-bg-secondary/60 hover:text-text-primary hover:border-border-main transition-colors"
-              >
-                <GithubIcon className="w-3.5 h-3.5 text-text-muted" />
-                <span>GitHub</span>
-                <ExternalLink className="w-3 h-3 text-text-muted" />
-              </a>
+              <GsapMagnetic strength={0.25}>
+                <a
+                  href={portfolioConfig.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hidden sm:inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-xs font-mono text-white/90 hover:text-white hover:bg-black/60 hover:border-white/40 transition-all shadow-lg cursor-pointer"
+                >
+                  <Terminal className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>GitHub Profile ↗</span>
+                </a>
+              </GsapMagnetic>
             )}
+          </div>
 
-            {portfolioConfig.linkedinUrl && (
-              <a
-                href={portfolioConfig.linkedinUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md border border-border-subtle bg-bg-secondary/60 hover:text-text-primary hover:border-border-main transition-colors"
-              >
-                <LinkedinIcon className="w-3.5 h-3.5 text-text-muted" />
-                <span>LinkedIn</span>
-                <ExternalLink className="w-3 h-3 text-text-muted" />
-              </a>
-            )}
+          {/* Main Hero Statement (nitin.design two-tone bold typography over nature) */}
+          <div className="relative z-20 max-w-4xl space-y-4 my-auto pt-8 sm:pt-14 pb-10 sm:pb-14 drop-shadow-md">
+            <h1 className="hero-headline text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.08]">
+              Learning how systems work.{" "}
+              <span className="text-white/70 font-normal">
+                Building resilient software from 0→1 across
+              </span>{" "}
+              Cybersecurity, Networks, and AI.
+            </h1>
 
-            {portfolioConfig.existingPortfolioUrl && (
-              <a
-                href={portfolioConfig.existingPortfolioUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md border border-border-subtle bg-bg-secondary/60 hover:text-text-primary hover:border-border-main transition-colors"
-              >
-                <Globe className="w-3.5 h-3.5 text-text-muted" />
-                <span>Live Portfolio</span>
-                <ExternalLink className="w-3 h-3 text-text-muted" />
-              </a>
-            )}
+            <p className="hero-subcopy text-base sm:text-lg text-white/85 max-w-2xl font-normal leading-relaxed drop-shadow-xs">
+              Computer Science Engineering student dedicated to defensive security labs, Linux kernel internals, packet analysis, and scaling digital ventures.
+            </p>
+          </div>
+
+          {/* Bottom Action Strip (nitin.design signature Schedule button and focus pill items) */}
+          <div className="hero-bottom relative z-20 pt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-white/15">
+            {/* Focus areas line */}
+            <div className="text-xs font-mono text-white/80 flex flex-wrap items-center gap-2 drop-shadow-xs">
+              <span className="text-white font-semibold">Primary Focus:</span>
+              <span>CSE Student</span>
+              <span>▪</span>
+              <span>Ethical Security Labs</span>
+              <span>▪</span>
+              <span>Building Velora</span>
+              <span>▪</span>
+              <span>50+ Tools & Labs</span>
+            </div>
+
+            {/* CTAs */}
+            <div className="flex flex-wrap items-center gap-3">
+              <GsapMagnetic strength={0.3}>
+                <Link
+                  href="#contact"
+                  className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-white text-neutral-900 font-bold text-sm hover:bg-neutral-100 transition-all shadow-[0_8px_20px_rgba(0,0,0,0.3)] hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+                >
+                  <span>Schedule a call</span>
+                  <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
+                </Link>
+              </GsapMagnetic>
+
+              <GsapMagnetic strength={0.3}>
+                <Link
+                  href="#prompt-studio"
+                  className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-black/50 text-white font-medium text-xs backdrop-blur-md border border-white/25 hover:border-white/50 hover:bg-black/70 transition-all cursor-pointer"
+                >
+                  <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>Prompt Agent ↓</span>
+                </Link>
+              </GsapMagnetic>
+            </div>
           </div>
         </div>
 
-        {/* Compact Information & Positioning Strip */}
-        <div className="mt-12 pt-8 border-t border-border-subtle grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <div className="flex items-start gap-3 p-3.5 rounded-lg border border-border-subtle bg-bg-card/70">
-            <div className="p-2 rounded-md bg-bg-secondary text-accent border border-border-main/60 shrink-0">
-              <ShieldCheck className="w-4 h-4" />
-            </div>
-            <div>
-              <p className="text-xs font-mono uppercase tracking-wider text-text-muted">Primary Focus</p>
-              <p className="text-sm font-semibold text-text-primary">Cybersecurity & Networks</p>
-              <p className="text-xs text-text-secondary">Defensive labs, packet analysis & Linux</p>
-            </div>
-          </div>
-
-          <div className="flex items-start gap-3 p-3.5 rounded-lg border border-border-subtle bg-bg-card/70">
-            <div className="p-2 rounded-md bg-bg-secondary text-accent border border-border-main/60 shrink-0">
-              <Terminal className="w-4 h-4" />
-            </div>
-            <div>
-              <p className="text-xs font-mono uppercase tracking-wider text-text-muted">Engineering</p>
-              <p className="text-sm font-semibold text-text-primary">Software & Automations</p>
-              <p className="text-xs text-text-secondary">Python CLI tools, C programs & Next.js</p>
+        {/* 3 Core Engineering Pillars */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+          <div className="hero-pillar h-full">
+            <div className="p-6 rounded-3xl border border-neutral-200/90 dark:border-neutral-800/90 bg-white dark:bg-[#12141a] space-y-2.5 hover:border-emerald-500/50 dark:hover:border-emerald-500/40 transition-all shadow-xs h-full">
+              <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 font-mono text-xs">
+                <ShieldCheck className="w-4 h-4" />
+                <span className="font-semibold uppercase tracking-wider">Defensive Security</span>
+              </div>
+              <p className="text-base font-bold text-neutral-900 dark:text-white">
+                Hands-On Ethical Labs
+              </p>
+              <p className="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                Dissecting packet headers, Wireshark traces, and Linux privilege models in isolated, authorized environments.
+              </p>
             </div>
           </div>
 
-          <div className="flex items-start gap-3 p-3.5 rounded-lg border border-border-subtle bg-bg-card/70">
-            <div className="p-2 rounded-md bg-bg-secondary text-accent border border-border-main/60 shrink-0">
-              <Layers className="w-4 h-4" />
+          <div className="hero-pillar h-full">
+            <div className="p-6 rounded-3xl border border-neutral-200/90 dark:border-neutral-800/90 bg-white dark:bg-[#12141a] space-y-2.5 hover:border-cyan-500/50 dark:hover:border-cyan-500/40 transition-all shadow-xs h-full">
+              <div className="flex items-center gap-2 text-cyan-600 dark:text-cyan-400 font-mono text-xs">
+                <Terminal className="w-4 h-4" />
+                <span className="font-semibold uppercase tracking-wider">Systems Architecture</span>
+              </div>
+              <p className="text-base font-bold text-neutral-900 dark:text-white">
+                First Principles Engineering
+              </p>
+              <p className="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                Studying low-level kernel abstractions, sockets, and RFC protocol specs before relying on high-level libraries.
+              </p>
             </div>
-            <div>
-              <p className="text-xs font-mono uppercase tracking-wider text-text-muted">Venture</p>
-              <p className="text-sm font-semibold text-text-primary">Velora Digital</p>
-              <p className="text-xs text-text-secondary">Digital growth & automation systems</p>
+          </div>
+
+          <div className="hero-pillar h-full">
+            <div className="p-6 rounded-3xl border border-neutral-200/90 dark:border-neutral-800/90 bg-white dark:bg-[#12141a] space-y-2.5 hover:border-purple-500/50 dark:hover:border-purple-500/40 transition-all shadow-xs h-full">
+              <div className="flex items-center gap-2 text-purple-600 dark:text-purple-400 font-mono text-xs">
+                <Layers className="w-4 h-4" />
+                <span className="font-semibold uppercase tracking-wider">Ventures & Velora</span>
+              </div>
+              <p className="text-base font-bold text-neutral-900 dark:text-white">
+                Software Tool Delivery
+              </p>
+              <p className="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                Converting deep systems understanding into reliable digital automation products and developer tools.
+              </p>
             </div>
           </div>
         </div>
+
       </div>
     </section>
   );

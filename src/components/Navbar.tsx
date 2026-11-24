@@ -11,7 +11,8 @@ import {
   Command, 
   Terminal, 
   Menu, 
-  X 
+  X,
+  ArrowUpRight
 } from "lucide-react";
 
 export function Navbar() {
@@ -42,14 +43,11 @@ export function Navbar() {
   }, []);
 
   const navLinks = [
-    { label: "Home", href: "/", isRoute: true },
     { label: "About", href: "/#about", isRoute: false },
     { label: "Projects", href: "/projects", isRoute: true },
     { label: "Cybersecurity", href: "/cybersecurity", isRoute: true },
-    { label: "Learning Log", href: "/learning", isRoute: true },
+    { label: "Prompt Studio", href: "/#prompt-studio", isRoute: false },
     { label: "Notes", href: "/notes", isRoute: true },
-    { label: "Ventures", href: "/#ventures", isRoute: false },
-    { label: "Contact", href: "/#contact", isRoute: false },
   ];
 
   const isLinkActive = (href: string) => {
@@ -60,28 +58,30 @@ export function Navbar() {
   return (
     <>
       <header
-        className={`sticky top-0 z-40 w-full transition-all duration-200 border-b ${
+        className={`sticky top-0 z-40 w-full transition-all duration-200 ${
           isScrolled
-            ? "bg-bg-main/85 backdrop-blur-md border-border-main/80 shadow-xs"
-            : "bg-bg-main/50 backdrop-blur-xs border-transparent"
+            ? "bg-[#f5f5f7]/85 dark:bg-[#0d0e12]/85 backdrop-blur-md border-b border-neutral-200/80 dark:border-neutral-800/80 shadow-xs"
+            : "bg-transparent border-b border-transparent"
         }`}
       >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
-          {/* Logo / Monogram */}
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 h-18 flex items-center justify-between gap-4">
+          {/* Logo / Monogram + Full Name (nitin.design style) */}
           <Link
             href="/"
-            className="flex items-center gap-2 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-md py-1 px-1.5"
-            aria-label="Bond Digital Headquarters Home"
+            className="flex items-center gap-3 group focus-visible:outline-none rounded-full py-1 px-1.5"
+            aria-label="Dhanush Gangadhar Home"
           >
-            <span className="font-mono text-base font-bold tracking-widest text-text-primary group-hover:text-accent transition-colors">
+            <div className="w-8 h-8 rounded-full bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 flex items-center justify-center font-mono text-xs font-bold shadow-xs">
               {portfolioConfig.monogram}
+            </div>
+            <span className="font-medium text-sm sm:text-base tracking-tight text-neutral-900 dark:text-white group-hover:text-emerald-500 transition-colors">
+              {portfolioConfig.displayName}
             </span>
-            <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
           </Link>
 
           {/* Desktop Navigation Links */}
           <nav
-            className="hidden md:flex items-center gap-1 text-sm font-medium"
+            className="hidden md:flex items-center gap-1.5 text-sm font-medium"
             aria-label="Main Navigation"
           >
             {navLinks.map((link) => {
@@ -90,10 +90,10 @@ export function Navbar() {
                 <Link
                   key={link.label}
                   href={link.href}
-                  className={`px-3 py-1.5 rounded-md transition-colors text-xs font-mono uppercase tracking-wider ${
+                  className={`px-3.5 py-1.5 rounded-full transition-all text-xs font-mono ${
                     active
-                      ? "text-accent bg-bg-card border border-border-main"
-                      : "text-text-secondary hover:text-text-primary hover:bg-bg-secondary/70"
+                      ? "text-neutral-900 dark:text-white bg-white dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 shadow-xs font-semibold"
+                      : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-200/50 dark:hover:bg-neutral-800/50"
                   }`}
                 >
                   {link.label}
@@ -103,31 +103,25 @@ export function Navbar() {
           </nav>
 
           {/* Right Action Controls */}
-          <div className="flex items-center gap-2">
-            {/* Command Palette Button */}
-            <button
-              type="button"
-              onClick={() => setCommandPaletteOpen(true)}
-              className="hidden sm:inline-flex items-center gap-2 px-2.5 py-1.5 rounded-md border border-border-main bg-bg-card hover:border-accent text-text-secondary hover:text-text-primary text-xs transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-              aria-label="Open command palette"
-              title="Search and commands (Ctrl+K or ⌘K)"
+          <div className="flex items-center gap-2.5">
+            {/* Signature Pill Button "Connect ↗" (nitin.design style) */}
+            <Link
+              href="#contact"
+              className="inline-flex items-center gap-1.5 px-4 sm:px-5 py-2 rounded-full border border-neutral-900 dark:border-white bg-transparent text-neutral-900 dark:text-white text-xs font-mono font-semibold hover:bg-neutral-900 hover:text-white dark:hover:bg-white dark:hover:text-neutral-900 transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] active:translate-x-[1px] active:translate-y-[1px]"
             >
-              <Command className="w-3.5 h-3.5 text-accent" />
-              <span className="font-mono text-[11px] text-text-muted">Search</span>
-              <kbd className="font-mono text-[10px] px-1 py-0.5 rounded bg-bg-secondary border border-border-main text-text-muted">
-                ⌘K
-              </kbd>
-            </button>
+              <span>Connect</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </Link>
 
             {/* Terminal Trigger */}
             <button
               type="button"
               onClick={() => setTerminalOpen(true)}
-              className="inline-flex items-center justify-center w-9 h-9 rounded-md border border-border-main bg-bg-card text-text-secondary hover:text-accent hover:border-accent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-              aria-label="Open developer terminal"
-              title="Developer CLI Terminal"
+              className="inline-flex items-center justify-center w-8 h-8 rounded-full border border-neutral-300 dark:border-neutral-700 text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:border-neutral-900 dark:hover:border-white transition-colors"
+              aria-label="Open CLI Terminal"
+              title="Interactive Terminal"
             >
-              <Terminal className="w-4 h-4" />
+              <Terminal className="w-3.5 h-3.5" />
             </button>
 
             {/* Theme Toggle */}
@@ -137,9 +131,8 @@ export function Navbar() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen((prev) => !prev)}
-              className="md:hidden inline-flex items-center justify-center w-9 h-9 rounded-md border border-border-main bg-bg-card text-text-secondary hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              className="md:hidden inline-flex items-center justify-center w-8 h-8 rounded-full border border-neutral-300 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300"
               aria-label="Toggle mobile menu"
-              aria-expanded={mobileMenuOpen}
             >
               {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
             </button>
@@ -148,17 +141,17 @@ export function Navbar() {
 
         {/* Mobile Dropdown Navigation */}
         {mobileMenuOpen && (
-          <div className="md:hidden border-b border-border-main bg-bg-card px-4 pt-3 pb-6 space-y-2 animate-in slide-in-from-top-2 duration-150">
-            <div className="grid grid-cols-2 gap-2 pb-3 border-b border-border-subtle">
+          <div className="md:hidden border-b border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#12141a] px-4 pt-3 pb-6 space-y-2 animate-in slide-in-from-top-2 duration-150">
+            <div className="grid grid-cols-2 gap-2 pb-3 border-b border-neutral-200 dark:border-neutral-800">
               <button
                 type="button"
                 onClick={() => {
                   setMobileMenuOpen(false);
                   setCommandPaletteOpen(true);
                 }}
-                className="flex items-center justify-center gap-2 p-2 rounded-md border border-border-main bg-bg-secondary text-xs text-text-primary"
+                className="flex items-center justify-center gap-2 p-2 rounded-full border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs font-mono"
               >
-                <Command className="w-3.5 h-3.5 text-accent" />
+                <Command className="w-3.5 h-3.5 text-emerald-500" />
                 <span>Command (⌘K)</span>
               </button>
               <button
@@ -167,9 +160,9 @@ export function Navbar() {
                   setMobileMenuOpen(false);
                   setTerminalOpen(true);
                 }}
-                className="flex items-center justify-center gap-2 p-2 rounded-md border border-border-main bg-bg-secondary text-xs text-text-primary"
+                className="flex items-center justify-center gap-2 p-2 rounded-full border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs font-mono"
               >
-                <Terminal className="w-3.5 h-3.5 text-accent" />
+                <Terminal className="w-3.5 h-3.5 text-emerald-500" />
                 <span>CLI Terminal</span>
               </button>
             </div>
@@ -180,11 +173,7 @@ export function Navbar() {
                   key={link.label}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                    isLinkActive(link.href)
-                      ? "text-accent bg-bg-secondary font-semibold"
-                      : "text-text-secondary hover:text-text-primary hover:bg-bg-secondary/50"
-                  }`}
+                  className="px-3.5 py-2.5 rounded-xl text-sm font-mono text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
                 >
                   {link.label}
                 </Link>
@@ -198,8 +187,8 @@ export function Navbar() {
       <CommandPalette
         isOpen={commandPaletteOpen}
         onClose={() => setCommandPaletteOpen(false)}
-        onOpenTerminal={() => setTerminalOpen(true)}
       />
+
       <TerminalModal
         isOpen={terminalOpen}
         onClose={() => setTerminalOpen(false)}

@@ -128,6 +128,7 @@ export interface PortfolioConfig {
   linkedinUrl: string | null;
   existingPortfolioUrl?: string | null;
   telegramUrl: string | null;
+  twitterUrl?: string | null;
   resumeUrl: string | null;
 
   currentFocus: CurrentFocus;

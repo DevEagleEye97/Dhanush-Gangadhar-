@@ -11,6 +11,7 @@ import {
   Activity, 
   ArrowRight
 } from "lucide-react";
+import { GsapReveal } from "@/components/GsapReveal";
 
 interface LearningTimelineProps {
   limit?: number;
@@ -143,7 +144,7 @@ export function LearningTimeline({ limit, showViewAllLink = true }: LearningTime
             </p>
           </div>
         ) : (
-          <div className="relative border-l border-border-main ml-3 sm:ml-6 pl-6 sm:pl-8 space-y-8">
+          <GsapReveal threshold="top 88%" stagger={0.08} className="relative border-l border-border-main ml-3 sm:ml-6 pl-6 sm:pl-8 space-y-8">
             {displayedItems.map((entry) => {
               const badge = getStatusBadge(entry.status);
               return (
@@ -201,10 +202,10 @@ export function LearningTimeline({ limit, showViewAllLink = true }: LearningTime
                     )}
                   </div>
                 </div>
-              );
-            })}
-          </div>
-        )}
+            );
+          })}
+        </GsapReveal>
+      )}
       </div>
     </section>
   );
