@@ -1,0 +1,69 @@
+{
+  "missingName": {
+    "name": "",
+    "email": "jane@example.com",
+    "category": "General Inquiry",
+    "message": "This is a valid length message for testing contact form validation."
+  },
+  "invalidEmail": {
+    "name": "Jane Doe",
+    "email": "not-a-valid-email",
+    "category": "General Inquiry",
+    "message": "This is a valid length message for testing contact form validation."
+  },
+  "invalidCategory": {
+    "name": "Jane Doe",
+    "email": "jane@example.com",
+    "category": "UnknownInvalidCategory123",
+    "message": "This is a valid length message for testing contact form validation."
+  },
+  "messageTooShort": {
+    "name": "Jane Doe",
+    "email": "jane@example.com",
+    "category": "General Inquiry",
+    "message": "Too short"
+  },
+  "emptyBody": {},
+  "cases": [
+    {
+      "description": "missing name",
+      "payload": {
+        "name": "",
+        "email": "jane@example.com",
+        "category": "General Inquiry",
+        "message": "Valid message text with sufficient length."
+      },
+      "expectedField": "name"
+    },
+    {
+      "description": "invalid email format",
+      "payload": {
+        "name": "Jane Doe",
+        "email": "invalid-email-address",
+        "category": "General Inquiry",
+        "message": "Valid message text with sufficient length."
+      },
+      "expectedField": "email"
+    },
+    {
+      "description": "unsupported category enum",
+      "payload": {
+        "name": "Jane Doe",
+        "email": "jane@example.com",
+        "category": "BogusCategory",
+        "message": "Valid message text with sufficient length."
+      },
+      "expectedField": "category"
+    },
+    {
+      "description": "message below 10 characters",
+      "payload": {
+        "name": "Jane Doe",
+        "email": "jane@example.com",
+        "category": "General Inquiry",
+        "message": "Short"
+      },
+      "expectedField": "message"
+    }
+  ]
+}
